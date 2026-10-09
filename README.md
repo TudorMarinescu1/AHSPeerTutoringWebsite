@@ -33,7 +33,9 @@ This is a small, trusted team working in a private repository. GitHub does not e
 5. Address required changes before merging.
 6. Let Tudor perform the final squash merge.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the complete workflow and review checklist.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the complete workflow, a button-by-button guide to opening a pull request, and the reviewer checklist.
+
+If this is your first contribution, start with [Step-by-step: open a pull request](CONTRIBUTING.md#step-by-step-open-a-pull-request).
 
 ## Privacy
 
