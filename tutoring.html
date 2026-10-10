@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoring Finder | Agoura High School Peer Tutoring</title>
+    <link rel="stylesheet" href="tutoring.css">
+    <script src="tutoring.js" defer></script>
+  </head>
+
+  <body>
+    <main class="tutoringPage">
+      <header class="siteHeader">
+        <a class="brand" href="index.html" aria-label="Agoura High School Peer Tutoring home">
+          <img src="assets/logo-symbol-enhanced.png" alt="">
+          <span>
+            <strong>Agoura High School</strong>
+            <em>Peer Tutoring</em>
+          </span>
+        </a>
+
+        <nav class="mainNav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="tutoring.html" aria-current="page">Tutoring</a>
+        </nav>
+      </header>
+
+      <section class="pageIntro" aria-labelledby="tutoring-heading">
+        <p class="eyebrow">Sample availability prototype</p>
+        <h1 id="tutoring-heading">Find in-person tutoring</h1>
+        <p>
+          This page shows sample in-person tutoring availability only. It does not collect personal
+          information and does not create real bookings.
+        </p>
+      </section>
+
+      <section class="serviceStatus" aria-label="Tutoring service status">
+        <article class="statusCard statusCard--active">
+          <h2>In-person tutoring</h2>
+          <p>Available below using sample data.</p>
+        </article>
+        <article class="statusCard statusCard--planned">
+          <h2>Online tutoring</h2>
+          <p>Planned for a future release.</p>
+        </article>
+        <article class="statusCard statusCard--future">
+          <h2>My Booking</h2>
+          <p>Requires the future booking system.</p>
+        </article>
+      </section>
+
+      <section class="finder" aria-labelledby="finder-heading">
+        <div class="finderHeader">
+          <h2 id="finder-heading">In-person finder</h2>
+          <p class="sampleNotice">All availability below is labeled sample data.</p>
+        </div>
+
+        <label for="subject-select">Choose a subject</label>
+        <select id="subject-select" name="subject"></select>
+
+        <p id="selection-message" class="selectionMessage" aria-live="polite"></p>
+        <div id="results" class="results" aria-live="polite"></div>
+      </section>
+    </main>
+  </body>
+</html>
