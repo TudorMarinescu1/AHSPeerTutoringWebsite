@@ -21,9 +21,9 @@
         </a>
 
         <nav class="mainNav" aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Tutoring</a>
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="tutoring.html">Tutoring</a>
         </nav>
       </header>
 
@@ -33,15 +33,74 @@
         <p>
           Room C2 is open for peer tutoring Tuesday through Thursday for morning tutoring
           and Tuesday and Thursday for lunch tutoring. We offer help with homework, test
-          review, essays, and more. Our peer tutors are students who have been trained to
-          provide academic support in a variety of subjects.
+          review, essays, and more.
         </p>
 
         <div class="heroActions">
-          <button type="button">Find tutoring</button>
-          <button type="button" class="goldButton">See announcements</button>
+          <a class="actionButton" href="tutoring.html">Find tutoring</a>
+          <a class="actionButton goldButton" href="#announcements">See announcements</a>
         </div>
       </section>
     </main>
+
+    <section class="programInfo" aria-labelledby="program-info-heading">
+      <div class="sectionIntro">
+        <p class="eyebrow">Plan your visit</p>
+        <h2 id="program-info-heading">Peer Tutoring at a glance</h2>
+        <p>
+          Find support in Room C2 for day-to-day coursework, upcoming tests, essays, and more.
+          Check the details below before you visit.
+        </p>
+      </div>
+
+      <div class="infoGrid">
+        <article class="infoCard">
+          <h3>Location and schedule</h3>
+          <p>
+            Peer Tutoring meets in Room C2 on Tuesday through Thursday mornings and on Tuesday
+            and Thursday at lunch. Exact morning hours have not been published yet.
+          </p>
+        </article>
+
+        <article class="infoCard">
+          <h3>Who can receive tutoring?</h3>
+          <p>
+            Students looking for extra academic support can visit Room C2 to ask about the help
+            available for their coursework.
+          </p>
+        </article>
+
+        <article class="infoCard">
+          <h3>Is tutoring free?</h3>
+          <p>
+            Fee information has not been published. Ask the tutoring room staff for the current
+            details before your visit.
+          </p>
+        </article>
+
+        <article class="infoCard">
+          <h3>How it works</h3>
+          <p>
+            Bring your questions and class materials. Sessions can include homework help, test
+            review, essay support, and practice with problem-solving strategies.
+          </p>
+        </article>
+
+        <article class="infoCard">
+          <h3>Walk-in availability</h3>
+          <p>
+            Visit Room C2 during the listed tutoring times to check current walk-in availability.
+          </p>
+        </article>
+      </div>
+
+      <section id="announcements" class="announcements" aria-labelledby="announcements-heading">
+        <p class="eyebrow">Announcements</p>
+        <h2 id="announcements-heading">Schedule updates will appear here</h2>
+        <p>
+          Check this section before visiting for future changes to tutoring times or locations.
+        </p>
+      </section>
+    </section>
   </body>
 </html>
