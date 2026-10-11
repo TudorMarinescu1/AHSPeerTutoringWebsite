@@ -5,6 +5,7 @@ import {
   getCoursesForSubject,
   getSlotAvailability,
   getWeekDates,
+  PHOTO_POLICY,
   subjects,
   timeRows
 } from "./tutoring-data.js";
@@ -15,6 +16,8 @@ const subjectSelect = document.querySelector("#subject-select");
 const courseSelect = document.querySelector("#course-select");
 const weekRange = document.querySelector("#week-range");
 const mobileDayControls = document.querySelector("#mobile-day-controls");
+const tutorDialog = document.querySelector("#tutor-dialog");
+const tutorDialogContent = document.querySelector("#tutor-dialog-content");
 
 function dateLabel(dateKey) {
   return formatDate(dateKey, { weekday: "short", month: "short", day: "numeric" });
@@ -42,7 +45,19 @@ function slotButton(date, time) {
   const tutors = availability.tutors.length;
   const tutorText = tutors === 1 ? "1 tutor available" : `${tutors} tutors available`;
   const label = availability.isOpen ? `Open, ${tutorText}` : "Full, no tutor available";
-  return `<button class="calendarSlot calendarSlot--${status}" type="button" ${availability.isOpen ? "" : "disabled"} aria-label="${dateLabel(date)} at ${formatTime(time)}: ${label}"><strong>${formatTime(time)}</strong><span>${availability.isOpen ? tutorText : "Full"}</span></button>`;
+  return `<button class="calendarSlot calendarSlot--${status}" type="button" ${availability.isOpen ? `data-slot-date="${date}" data-slot-time="${time}"` : "disabled"} aria-label="${dateLabel(date)} at ${formatTime(time)}: ${label}"><strong>${formatTime(time)}</strong><span>${availability.isOpen ? tutorText : "Full"}</span></button>`;
+}
+
+function tutorAvatar(tutor) {
+  if (PHOTO_POLICY.showTutorPhotos && tutor.photo) return `<img src="${tutor.photo}" alt="${tutor.name}">`;
+  return `<span aria-hidden="true">${tutor.initials}</span>`;
+}
+
+function openTutorDialog(date, time) {
+  const availability = getSlotAvailability({ date, time, subjectId: state.subjectId });
+  const subjectName = subjects.find((subject) => subject.id === state.subjectId)?.name || "your selected subject";
+  tutorDialogContent.innerHTML = `<p class="dialogEyebrow">${dateLabel(date)} · ${formatTime(time)}</p><h2 id="tutor-dialog-title">Choose a tutor</h2><p class="dialogLead">${availability.tutors.length} tutor${availability.tutors.length === 1 ? " is" : "s are"} open for ${subjectName}.</p><div class="tutorChoices">${availability.tutors.map((tutor) => `<article class="tutorChoice"><div class="tutorAvatar">${tutorAvatar(tutor)}</div><div><h3>${tutor.name}</h3><p>${tutor.expertise}</p><details><summary>View full profile</summary><p>${tutor.bio}</p></details></div><button type="button" class="chooseTutor" data-tutor-id="${tutor.id}">Choose tutor</button></article>`).join("")}</div>`;
+  tutorDialog.showModal();
 }
 
 function renderCalendar() {
@@ -70,4 +85,10 @@ mobileDayControls.addEventListener("click", (event) => {
   state.mobileDayIndex = Number(button.dataset.dayIndex);
   renderCalendar();
 });
+calendar.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-slot-date]");
+  if (button) openTutorDialog(button.dataset.slotDate, button.dataset.slotTime);
+});
+document.querySelector("#close-tutor-dialog").addEventListener("click", () => tutorDialog.close());
+tutorDialog.addEventListener("click", (event) => { if (event.target === tutorDialog) tutorDialog.close(); });
 render();
