@@ -70,6 +70,19 @@
         <p>Availability is editable sample data for review. Green and red status indicate whether a qualified tutor is currently available for the selected subject.</p>
       </section>
 
+      <section id="my-bookings" class="calendarNotes bookingPanel" aria-labelledby="my-bookings-title">
+        <h2 id="my-bookings-title">My Bookings</h2>
+        <p id="bookings-empty">Confirmed tutoring sessions from this browser will appear here.</p>
+        <div id="bookings-list" class="bookingsList"></div>
+      </section>
+
+      <section class="calendarNotes schedulePanel" aria-labelledby="schedule-title">
+        <h2 id="schedule-title">Tutor schedule prototype</h2>
+        <p>Each Sunday, tutors submit availability for the following week. Unsubmitted schedules do not add open time blocks.</p>
+        <button id="submit-sample-schedule" class="secondaryButton" type="button">Submit sample next-week schedule</button>
+        <p id="schedule-status" class="scheduleStatus" aria-live="polite"></p>
+      </section>
+
       <dialog id="tutor-dialog" class="tutorDialog" aria-labelledby="tutor-dialog-title">
         <button id="close-tutor-dialog" class="dialogClose" type="button" aria-label="Close tutor selection">×</button>
         <div id="tutor-dialog-content"></div>

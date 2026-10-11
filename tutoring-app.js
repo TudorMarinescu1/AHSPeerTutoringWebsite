@@ -9,6 +9,7 @@ import {
   subjects,
   timeRows
 } from "./tutoring-data.js";
+import { createTutoringService } from "./tutoring-service.js";
 
 const state = { weekAnchor: "2026-10-12", subjectId: "all", mobileDayIndex: 0 };
 const calendar = document.querySelector("#calendar");
@@ -18,6 +19,8 @@ const weekRange = document.querySelector("#week-range");
 const mobileDayControls = document.querySelector("#mobile-day-controls");
 const tutorDialog = document.querySelector("#tutor-dialog");
 const tutorDialogContent = document.querySelector("#tutor-dialog-content");
+const service = createTutoringService();
+let selectedSlot = null;
 
 function dateLabel(dateKey) {
   return formatDate(dateKey, { weekday: "short", month: "short", day: "numeric" });
@@ -54,10 +57,33 @@ function tutorAvatar(tutor) {
 }
 
 function openTutorDialog(date, time) {
+  selectedSlot = { date, time };
   const availability = getSlotAvailability({ date, time, subjectId: state.subjectId });
   const subjectName = subjects.find((subject) => subject.id === state.subjectId)?.name || "your selected subject";
   tutorDialogContent.innerHTML = `<p class="dialogEyebrow">${dateLabel(date)} · ${formatTime(time)}</p><h2 id="tutor-dialog-title">Choose a tutor</h2><p class="dialogLead">${availability.tutors.length} tutor${availability.tutors.length === 1 ? " is" : "s are"} open for ${subjectName}.</p><div class="tutorChoices">${availability.tutors.map((tutor) => `<article class="tutorChoice"><div class="tutorAvatar">${tutorAvatar(tutor)}</div><div><h3>${tutor.name}</h3><p>${tutor.expertise}</p><details><summary>View full profile</summary><p>${tutor.bio}</p></details></div><button type="button" class="chooseTutor" data-tutor-id="${tutor.id}">Choose tutor</button></article>`).join("")}</div>`;
   tutorDialog.showModal();
+}
+
+function showBookingForm(tutorId) {
+  tutorDialogContent.innerHTML = `<p class="dialogEyebrow">${dateLabel(selectedSlot.date)} · ${formatTime(selectedSlot.time)}</p><h2 id="tutor-dialog-title">Confirm tutoring request</h2><form id="booking-form" class="bookingForm"><label>Name<input name="name" required autocomplete="name"></label><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Course<input name="course" required value="${courseSelect.disabled ? "" : courseSelect.value}"></label><button class="chooseTutor" type="submit">Request email approval</button><p class="formHint">This prototype simulates first-device email approval. A slot is not held until a booking is final.</p></form>`;
+  document.querySelector("#booking-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const draft = { tutorId, ...selectedSlot, student: Object.fromEntries(form) };
+    const outcome = service.requestBooking(draft);
+    if (outcome.status === "conflict") { tutorDialogContent.innerHTML = "<h2 id=\"tutor-dialog-title\">That tutor was just booked</h2><p>Please close this panel and choose another green time or tutor.</p>"; return; }
+    const final = service.approveAndBook(draft);
+    tutorDialogContent.innerHTML = `<h2 id="tutor-dialog-title">Booking confirmed</h2><p>A sample confirmation and 24-hour reminders have been queued. In production, the first-device approval email would be sent before this final step.</p>`;
+    renderBookings();
+    renderCalendar();
+  });
+}
+
+function renderBookings() {
+  const list = document.querySelector("#bookings-list");
+  const empty = document.querySelector("#bookings-empty");
+  empty.hidden = service.bookings.length > 0;
+  list.innerHTML = service.bookings.map((booking) => `<article class="bookingItem"><strong>${dateLabel(booking.date)} · ${formatTime(booking.time)}</strong><span>${booking.student.course} with ${booking.tutorId.replace("-", " ")}</span><button type="button" disabled title="Rescheduling is simulated in this prototype">Manage booking</button></article>`).join("");
 }
 
 function renderCalendar() {
@@ -91,4 +117,6 @@ calendar.addEventListener("click", (event) => {
 });
 document.querySelector("#close-tutor-dialog").addEventListener("click", () => tutorDialog.close());
 tutorDialog.addEventListener("click", (event) => { if (event.target === tutorDialog) tutorDialog.close(); });
+tutorDialogContent.addEventListener("click", (event) => { const button = event.target.closest(".chooseTutor[data-tutor-id]"); if (button) showBookingForm(button.dataset.tutorId); });
+document.querySelector("#submit-sample-schedule").addEventListener("click", () => { service.submitSchedule("maya-chen", state.weekAnchor); service.requestSundayReminder("maya-chen"); document.querySelector("#schedule-status").textContent = "Sample next-week schedule submitted. A Sunday reminder notification was recorded."; });
 render();
