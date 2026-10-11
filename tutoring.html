@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutoring Finder | Agoura High School Peer Tutoring</title>
     <link rel="stylesheet" href="tutoring.css">
-    <script src="tutoring.js" defer></script>
+    <script type="module" src="tutoring-app.js"></script>
   </head>
 
   <body>
@@ -22,45 +22,52 @@
         <nav class="mainNav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">About Us</a>
-          <a href="tutoring.html" aria-current="page">Tutoring</a>
+          <details class="tutoringMenu" open>
+            <summary aria-current="page">Tutoring</summary>
+            <div class="tutoringMenuPanel">
+              <a href="tutoring.html">Book Tutoring</a>
+              <a href="tutoring.html#my-bookings">My Bookings</a>
+              <a href="become-a-tutor.html">How to Become a Tutor</a>
+            </div>
+          </details>
         </nav>
       </header>
 
       <section class="pageIntro" aria-labelledby="tutoring-heading">
-        <p class="eyebrow">Sample availability prototype</p>
-        <h1 id="tutoring-heading">Find in-person tutoring</h1>
-        <p>
-          This page shows sample in-person tutoring availability only. It does not collect personal
-          information and does not create real bookings.
-        </p>
+        <p class="eyebrow">Student scheduling portal</p>
+        <h1 id="tutoring-heading">Book peer tutoring</h1>
+        <p>Choose a subject, review the week, and select a green time to meet a qualified peer tutor.</p>
       </section>
 
-      <section class="serviceStatus" aria-label="Tutoring service status">
-        <article class="statusCard statusCard--active">
-          <h2>In-person tutoring</h2>
-          <p>Available below using sample data.</p>
-        </article>
-        <article class="statusCard statusCard--planned">
-          <h2>Online tutoring</h2>
-          <p>Planned for a future release.</p>
-        </article>
-        <article class="statusCard statusCard--future">
-          <h2>My Booking</h2>
-          <p>Requires the future booking system.</p>
-        </article>
-      </section>
-
-      <section class="finder" aria-labelledby="finder-heading">
-        <div class="finderHeader">
-          <h2 id="finder-heading">In-person finder</h2>
-          <p class="sampleNotice">All availability below is labeled sample data.</p>
+      <section class="calendarShell" aria-labelledby="calendar-heading">
+        <div class="calendarToolbar">
+          <div>
+            <p class="sectionKicker">Availability calendar</p>
+            <h2 id="calendar-heading">This week</h2>
+            <p id="week-range" class="weekRange"></p>
+          </div>
+          <div class="calendarControls" aria-label="Calendar navigation">
+            <button id="previous-week" class="iconButton" type="button" aria-label="Previous week">‹</button>
+            <button id="today" class="secondaryButton" type="button">Today</button>
+            <button id="next-week" class="iconButton" type="button" aria-label="Next week">›</button>
+          </div>
         </div>
+        <div class="filterBar">
+          <label>Subject <select id="subject-select" name="subject"></select></label>
+          <label>Course <select id="course-select" name="course" disabled></select></label>
+          <p class="timeZone">All times are shown in <strong>Pacific Time</strong>.</p>
+        </div>
+        <div class="legend" aria-label="Availability legend">
+          <span><i class="statusDot statusDot--open"></i> Open — choose a tutor</span>
+          <span><i class="statusDot statusDot--full"></i> Full — no tutor available</span>
+        </div>
+        <div id="mobile-day-controls" class="mobileDayControls" aria-label="Day navigation"></div>
+        <div id="calendar" class="calendar" aria-live="polite"></div>
+      </section>
 
-        <label for="subject-select">Choose a subject</label>
-        <select id="subject-select" name="subject"></select>
-
-        <p id="selection-message" class="selectionMessage" aria-live="polite"></p>
-        <div id="results" class="results" aria-live="polite"></div>
+      <section class="calendarNotes" aria-label="About this prototype">
+        <h2>About this scheduling prototype</h2>
+        <p>Availability is editable sample data for review. Green and red status indicate whether a qualified tutor is currently available for the selected subject.</p>
       </section>
     </main>
   </body>

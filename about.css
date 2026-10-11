@@ -200,3 +200,7 @@ h2 {
     font-size: 16px;
   }
 }
+
+.tutoringMenu { position: relative; }
+.tutoringMenu summary { list-style: none; cursor: pointer; }.tutoringMenu summary::-webkit-details-marker { display: none; }
+.tutoringMenu summary::after { content: "⌄"; margin-left: 6px; }.tutoringMenuPanel { position: absolute; z-index: 5; top: calc(100% + 10px); right: 0; display: grid; min-width: 190px; padding: 8px; border-radius: 12px; background: #ffffff; box-shadow: 0 12px 28px rgba(0,0,0,.2); }.tutoringMenuPanel a { color: #17233a; text-decoration: none; padding: 9px 10px; border-radius: 8px; }.tutoringMenuPanel a:hover { background: #f1f3f7; }
