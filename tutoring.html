@@ -22,14 +22,14 @@
         <nav class="mainNav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">About Us</a>
-          <details class="tutoringMenu" open>
-            <summary aria-current="page">Tutoring</summary>
+          <div class="tutoringMenu">
+            <a class="tutoringMenuTrigger" href="tutoring.html" aria-current="page">Tutoring</a>
             <div class="tutoringMenuPanel">
               <a href="tutoring.html">Book Tutoring</a>
               <a href="tutoring.html#my-bookings">My Bookings</a>
               <a href="become-a-tutor.html">How to Become a Tutor</a>
             </div>
-          </details>
+          </div>
         </nav>
       </header>
 
@@ -76,12 +76,6 @@
         <div id="bookings-list" class="bookingsList"></div>
       </section>
 
-      <section class="calendarNotes schedulePanel" aria-labelledby="schedule-title">
-        <h2 id="schedule-title">Tutor schedule prototype</h2>
-        <p>Each Sunday, tutors submit availability for the following week. Unsubmitted schedules do not add open time blocks.</p>
-        <button id="submit-sample-schedule" class="secondaryButton" type="button">Submit sample next-week schedule</button>
-        <p id="schedule-status" class="scheduleStatus" aria-live="polite"></p>
-      </section>
 
       <dialog id="tutor-dialog" class="tutorDialog" aria-labelledby="tutor-dialog-title">
         <button id="close-tutor-dialog" class="dialogClose" type="button" aria-label="Close tutor selection">×</button>

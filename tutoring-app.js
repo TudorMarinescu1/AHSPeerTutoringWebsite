@@ -118,5 +118,4 @@ calendar.addEventListener("click", (event) => {
 document.querySelector("#close-tutor-dialog").addEventListener("click", () => tutorDialog.close());
 tutorDialog.addEventListener("click", (event) => { if (event.target === tutorDialog) tutorDialog.close(); });
 tutorDialogContent.addEventListener("click", (event) => { const button = event.target.closest(".chooseTutor[data-tutor-id]"); if (button) showBookingForm(button.dataset.tutorId); });
-document.querySelector("#submit-sample-schedule").addEventListener("click", () => { service.submitSchedule("maya-chen", state.weekAnchor); service.requestSundayReminder("maya-chen"); document.querySelector("#schedule-status").textContent = "Sample next-week schedule submitted. A Sunday reminder notification was recorded."; });
 render();
