@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agoura High School Peer Tutoring</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="menu.css">
   </head>
 
   <body>
@@ -23,7 +24,14 @@
         <nav class="mainNav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">About Us</a>
-          <a href="#tutoring">Tutoring</a>
+          <div class="tutoringMenu">
+            <a class="tutoringMenuTrigger" href="tutoring.html">Tutoring</a>
+            <div class="tutoringMenuPanel">
+              <a href="tutoring.html">Book Tutoring</a>
+              <a href="tutoring.html#my-bookings">My Bookings</a>
+              <a href="become-a-tutor.html">How to Become a Tutor</a>
+            </div>
+          </div>
         </nav>
       </header>
 
@@ -38,7 +46,7 @@
         </p>
 
         <div class="heroActions">
-          <button type="button">Find tutoring</button>
+          <a class="heroButton" href="tutoring.html">Find tutoring</a>
           <button type="button" class="goldButton">See announcements</button>
         </div>
       </section>

@@ -200,3 +200,12 @@ h2 {
     font-size: 16px;
   }
 }
+
+.tutoringMenu { position: relative; }
+.tutoringMenuTrigger { display: inline-block; padding: 10px 16px; border-radius: 999px; color: inherit; font-size: 15px; font-weight: 800; text-decoration: none; }.tutoringMenuPanel { display: none; }.tutoringMenu:hover .tutoringMenuPanel, .tutoringMenu:focus-within .tutoringMenuPanel { display: grid; }
+.tutoringMenuPanel { display: none; }.tutoringMenu:hover .tutoringMenuPanel, .tutoringMenu:focus-within .tutoringMenuPanel { display: grid; }
+.tutoringMenuPanel { display: grid; top: 100%; visibility: hidden; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease; }
+.tutoringMenu:hover .tutoringMenuPanel, .tutoringMenu:focus-within .tutoringMenuPanel { display: grid; visibility: visible; opacity: 1; transform: translateY(0); pointer-events: auto; }
+.tutoringMenu summary { list-style: none; cursor: pointer; }.tutoringMenu summary::-webkit-details-marker { display: none; }
+.tutoringMenu summary::after { content: "⌄"; margin-left: 6px; }.tutoringMenuPanel { position: absolute; z-index: 5; top: calc(100% + 10px); right: 0; display: grid; min-width: 190px; padding: 8px; border-radius: 12px; background: #ffffff; box-shadow: 0 12px 28px rgba(0,0,0,.2); }.tutoringMenuPanel a { color: #17233a; text-decoration: none; padding: 9px 10px; border-radius: 8px; }.tutoringMenuPanel a:hover { background: #f1f3f7; }
+.tutoringMenuPanel { display: none; }.tutoringMenu:hover .tutoringMenuPanel, .tutoringMenu:focus-within .tutoringMenuPanel { display: grid; }

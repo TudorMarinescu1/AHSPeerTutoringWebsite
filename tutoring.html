@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoring Finder | Agoura High School Peer Tutoring</title>
+    <link rel="stylesheet" href="tutoring.css">
+    <link rel="stylesheet" href="menu.css">
+    <script type="module" src="tutoring-app.js"></script>
+  </head>
+
+  <body>
+    <main class="tutoringPage">
+      <header class="siteHeader">
+        <a class="brand" href="index.html" aria-label="Agoura High School Peer Tutoring home">
+          <img src="assets/logo-symbol-enhanced.png" alt="">
+          <span>
+            <strong>Agoura High School</strong>
+            <em>Peer Tutoring</em>
+          </span>
+        </a>
+
+        <nav class="mainNav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <div class="tutoringMenu">
+            <a class="tutoringMenuTrigger" href="tutoring.html" aria-current="page">Tutoring</a>
+            <div class="tutoringMenuPanel">
+              <a href="tutoring.html">Book Tutoring</a>
+              <a href="tutoring.html#my-bookings">My Bookings</a>
+              <a href="become-a-tutor.html">How to Become a Tutor</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <section class="pageIntro" aria-labelledby="tutoring-heading">
+        <p class="eyebrow">Student scheduling portal</p>
+        <h1 id="tutoring-heading">Book peer tutoring</h1>
+        <p>Choose a subject, review the week, and select a green time to meet a qualified peer tutor.</p>
+      </section>
+
+      <section class="calendarShell" aria-labelledby="calendar-heading">
+        <div class="calendarToolbar">
+          <div>
+            <p class="sectionKicker">Availability calendar</p>
+            <h2 id="calendar-heading">This week</h2>
+            <p id="week-range" class="weekRange"></p>
+          </div>
+          <div class="calendarControls" aria-label="Calendar navigation">
+            <button id="previous-week" class="iconButton" type="button" aria-label="Previous week">‹</button>
+            <button id="today" class="secondaryButton" type="button">Today</button>
+            <button id="next-week" class="iconButton" type="button" aria-label="Next week">›</button>
+          </div>
+        </div>
+        <div class="filterBar">
+          <label>Subject <select id="subject-select" name="subject"></select></label>
+          <label>Course <select id="course-select" name="course" disabled></select></label>
+          <p class="timeZone">All times are shown in <strong>Pacific Time</strong>.</p>
+        </div>
+        <div class="legend" aria-label="Availability legend">
+          <span><i class="statusDot statusDot--open"></i> Open — choose a tutor</span>
+          <span><i class="statusDot statusDot--full"></i> Full — no tutor available</span>
+        </div>
+        <div id="mobile-day-controls" class="mobileDayControls" aria-label="Day navigation"></div>
+        <div id="calendar" class="calendar" aria-live="polite"></div>
+      </section>
+
+      <section class="calendarNotes" aria-label="About this prototype">
+        <h2>About this scheduling prototype</h2>
+        <p>Availability is editable sample data for review. Green and red status indicate whether a qualified tutor is currently available for the selected subject.</p>
+      </section>
+
+      <section id="my-bookings" class="calendarNotes bookingPanel" aria-labelledby="my-bookings-title">
+        <h2 id="my-bookings-title">My Bookings</h2>
+        <p id="bookings-empty">Confirmed tutoring sessions from this browser will appear here.</p>
+        <div id="bookings-list" class="bookingsList"></div>
+      </section>
+
+
+      <dialog id="tutor-dialog" class="tutorDialog" aria-labelledby="tutor-dialog-title">
+        <button id="close-tutor-dialog" class="dialogClose" type="button" aria-label="Close tutor selection">×</button>
+        <div id="tutor-dialog-content"></div>
+      </dialog>
+    </main>
+  </body>
+</html>
