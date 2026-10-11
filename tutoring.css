@@ -1,0 +1,554 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  color: white;
+  background:
+    linear-gradient(180deg, rgba(8, 26, 58, 0.86), rgba(8, 26, 58, 0.92)),
+    url("assets/empty-classroom-hero.png") center / cover no-repeat fixed;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+.tutoringPage {
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+.siteHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px clamp(22px, 5vw, 72px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  text-decoration: none;
+}
+
+.brand img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.28));
+}
+
+.brand span,
+.brand strong,
+.brand em {
+  display: block;
+}
+
+.brand strong {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.brand em {
+  margin-top: 2px;
+  color: #f9c736;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.mainNav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  background: rgba(8, 26, 58, 0.34);
+  backdrop-filter: blur(18px);
+}
+
+.mainNav a {
+  padding: 10px 16px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.mainNav a[aria-current="page"] {
+  background: #f9c736;
+  color: #12213a;
+}
+
+.pageIntro,
+.serviceStatus,
+.finder {
+  width: min(980px, calc(100% - 44px));
+  margin-inline: auto;
+}
+
+.pageIntro {
+  margin-top: clamp(18px, 4vw, 30px);
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  color: #f9c736;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: clamp(38px, 5.6vw, 62px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.pageIntro p:not(.eyebrow),
+.statusCard p,
+.finderHeader p,
+.tutorCard p {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.6;
+}
+
+.serviceStatus {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.statusCard {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  padding: 14px;
+  background: rgba(8, 26, 58, 0.42);
+}
+
+.statusCard h2 {
+  margin-bottom: 6px;
+  font-size: 20px;
+}
+
+.statusCard p {
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+.statusCard--active {
+  border-color: rgba(249, 199, 54, 0.85);
+}
+
+.statusCard--planned,
+.statusCard--future {
+  opacity: 0.9;
+}
+
+.finder {
+  padding: clamp(16px, 2.5vw, 22px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 18px;
+  background: rgba(8, 26, 58, 0.5);
+}
+
+.finderHeader {
+  margin-bottom: 14px;
+}
+
+.finder h2 {
+  margin-bottom: 8px;
+  font-size: clamp(26px, 4vw, 34px);
+  letter-spacing: -0.02em;
+}
+
+.sampleNotice {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f9c736;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+select {
+  width: min(420px, 100%);
+  min-height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 10px;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.selectionMessage {
+  min-height: 24px;
+  margin: 14px 0 8px;
+  color: #f9c736;
+  font-weight: 700;
+}
+
+.results {
+  display: grid;
+  gap: 12px;
+}
+
+.stateCard,
+.tutorCard {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(9, 32, 72, 0.55);
+}
+
+.stateCard h3,
+.tutorCard h3 {
+  margin-bottom: 8px;
+  font-size: 21px;
+}
+
+.stateCard p,
+.tutorCard p {
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+.slotList {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.slotLabel {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.slotLabel--morning {
+  color: #12213a;
+  background: #f9c736;
+}
+
+.slotLabel--lunch {
+  color: #12213a;
+  background: #8ed9ff;
+}
+
+.slotText {
+  flex: 1;
+  min-width: 130px;
+  font-size: 14px;
+}
+
+.slotStatus {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.slotStatus--available {
+  color: #b8f5c5;
+}
+
+.slotStatus--unavailable {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.timeButton {
+  border: 0;
+  border-radius: 999px;
+  min-height: 34px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 800;
+  background: #f9c736;
+  color: #12213a;
+  cursor: pointer;
+}
+
+.timeButton:hover,
+.timeButton:focus-visible {
+  filter: brightness(1.05);
+}
+
+@media (max-width: 920px) {
+  .serviceStatus {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .siteHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .mainNav {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .brand img {
+    width: 46px;
+    height: 46px;
+  }
+
+  .brand strong {
+    font-size: 12px;
+  }
+
+  .brand em {
+    font-size: 20px;
+  }
+
+  .mainNav a {
+    padding: 9px 13px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .slot {
+    align-items: flex-start;
+  }
+}
+
+/* Formal scheduling surface: intentionally separate from the image-led home and about pages. */
+body {
+  color: #172033;
+  background: #f5f6f8;
+}
+
+.tutoringPage {
+  padding-bottom: 56px;
+}
+
+.siteHeader {
+  border-bottom: 1px solid #dde1e7;
+  background: #ffffff;
+}
+
+.brand img {
+  filter: none;
+}
+
+.brand strong {
+  color: #24314b;
+}
+
+.brand em,
+.eyebrow,
+.sectionKicker {
+  color: #8a6011;
+}
+
+.mainNav {
+  border-color: #d7dce4;
+  background: #ffffff;
+  backdrop-filter: none;
+}
+
+.mainNav a {
+  color: #27334a;
+}
+
+.mainNav a[aria-current="page"] {
+  color: #ffffff;
+  background: #243b64;
+}
+
+.pageIntro,
+.calendarShell,
+.calendarNotes {
+  width: min(1180px, calc(100% - 44px));
+  margin-inline: auto;
+}
+
+.pageIntro {
+  margin-top: 52px;
+  margin-bottom: 28px;
+}
+
+.pageIntro p:not(.eyebrow) {
+  max-width: 700px;
+  color: #536077;
+  font-size: 18px;
+}
+
+.pageIntro h1 {
+  color: #172033;
+  font-size: clamp(38px, 5vw, 56px);
+}
+
+.calendarShell,
+.calendarNotes {
+  border: 1px solid #dfe3e9;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(23, 32, 51, 0.06);
+}
+
+.calendarShell {
+  overflow: hidden;
+}
+
+.calendarToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 28px 20px;
+  border-bottom: 1px solid #e4e7eb;
+}
+
+.sectionKicker,
+.weekRange {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.weekRange { color: #66748b; letter-spacing: 0.04em; }
+.calendarToolbar h2 { margin: 5px 0; color: #18243a; font-size: 28px; }
+.calendarControls { display: flex; align-items: center; gap: 8px; }
+
+.iconButton,
+.secondaryButton,
+.dayPill {
+  min-height: 38px;
+  border: 1px solid #d7dde6;
+  border-radius: 9px;
+  padding: 0 13px;
+  color: #24314b;
+  background: #ffffff;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.iconButton { width: 38px; padding: 0; font-size: 24px; line-height: 1; }
+.iconButton:hover, .secondaryButton:hover, .dayPill:hover { border-color: #8291a8; background: #f7f8fa; }
+.iconButton:focus-visible, .secondaryButton:focus-visible, .dayPill:focus-visible, select:focus-visible, .calendarSlot:focus-visible { outline: 3px solid #85a8e6; outline-offset: 2px; }
+
+.filterBar {
+  display: flex;
+  align-items: end;
+  gap: 16px;
+  padding: 20px 28px;
+  border-bottom: 1px solid #e4e7eb;
+}
+
+.filterBar label {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  color: #33405a;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.filterBar select {
+  width: 220px;
+  min-height: 42px;
+  border: 1px solid #cdd4de;
+  border-radius: 8px;
+  padding: 0 11px;
+  color: #1d293d;
+  background: #ffffff;
+}
+
+.filterBar select:disabled { color: #8791a1; background: #f2f4f7; }
+.timeZone { margin: 0 0 11px auto; color: #5a667a; font-size: 14px; }
+.legend { display: flex; flex-wrap: wrap; gap: 18px; padding: 14px 28px; color: #5a667a; font-size: 13px; font-weight: 700; }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.statusDot { width: 10px; height: 10px; border-radius: 50%; }
+.statusDot--open { background: #23824a; }.statusDot--full { background: #b63e3e; }
+
+.calendar { overflow-x: auto; padding: 0 28px 28px; }
+.calendarGrid { display: grid; grid-template-columns: 92px repeat(7, minmax(112px, 1fr)); min-width: 880px; border-top: 1px solid #e4e7eb; border-left: 1px solid #e4e7eb; }
+.timeCorner, .dayHeader, .timeLabel, .calendarCell { min-height: 62px; border-right: 1px solid #e4e7eb; border-bottom: 1px solid #e4e7eb; }
+.timeCorner, .dayHeader { background: #fafbfc; }
+.timeCorner { display: flex; align-items: center; padding: 11px; color: #778397; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+.dayHeader { display: grid; place-content: center; gap: 2px; text-align: center; }.dayHeader span { color: #758197; font-size: 12px; font-weight: 800; text-transform: uppercase; }.dayHeader strong { color: #26334b; font-size: 19px; }
+.timeLabel { padding: 15px 10px; color: #657187; font-size: 13px; font-weight: 800; }.calendarCell { padding: 7px; }
+.calendarSlot { display: grid; width: 100%; min-height: 48px; border: 1px solid; border-radius: 9px; padding: 8px 9px; text-align: left; font: inherit; cursor: pointer; }.calendarSlot strong { font-size: 12px; }.calendarSlot span { margin-top: 2px; font-size: 11px; font-weight: 700; }.calendarSlot--open { border-color: #75c593; color: #155c32; background: #e9f8ee; }.calendarSlot--open:hover { background: #d9f3e2; }.calendarSlot--full { border-color: #e3aaaa; color: #8e3030; background: #fceeee; cursor: not-allowed; opacity: 1; }
+.mobileDayControls { display: none; }
+.calendarNotes { margin-top: 20px; padding: 22px 28px; }.calendarNotes h2 { margin-bottom: 7px; color: #26334b; font-size: 18px; }.calendarNotes p { margin: 0; color: #5c687b; line-height: 1.55; }
+
+@media (max-width: 720px) {
+  .calendarToolbar, .filterBar { align-items: flex-start; flex-direction: column; }.filterBar { gap: 12px; }.filterBar label, .filterBar select { width: 100%; }.timeZone { margin: 0; }.calendar { padding: 0; overflow: hidden; }.calendarGrid { grid-template-columns: 82px minmax(0, 1fr); min-width: 0; border-left: 0; }.calendarGrid > :nth-child(n + 3):nth-child(-n + 8) { display: none; }.calendarGrid > .dayHeader.is-mobile-current { display: grid; }.calendarCell { display: none; }.calendarCell.is-mobile-current { display: block; }.timeCorner, .dayHeader, .timeLabel, .calendarCell { border-right: 0; }.mobileDayControls { display: flex; gap: 7px; overflow-x: auto; padding: 0 20px 16px; }.dayPill { flex: 0 0 auto; min-height: 34px; font-size: 12px; }.dayPill.is-active { color: #ffffff; border-color: #243b64; background: #243b64; }.calendarSlot { min-height: 54px; }.calendarShell, .calendarNotes { width: min(100% - 28px, 1180px); }.calendarToolbar { padding: 20px; }.filterBar, .legend { padding-inline: 20px; }.pageIntro { margin-top: 32px; }
+}
+
+.tutoringMenu { position: relative; }
+.tutoringMenuTrigger { display: inline-block; padding: 10px 16px; border-radius: 999px; color: #27334a; font-size: 15px; font-weight: 800; text-decoration: none; }.tutoringMenuTrigger[aria-current="page"] { color: #ffffff; background: #243b64; }.tutoringMenuPanel { display: none; }.tutoringMenu:hover .tutoringMenuPanel, .tutoringMenu:focus-within .tutoringMenuPanel { display: grid; }
+.tutoringMenuPanel { display: none; }.tutoringMenu:hover .tutoringMenuPanel, .tutoringMenu:focus-within .tutoringMenuPanel { display: grid; }
+.tutoringMenuPanel { display: grid; top: 100%; visibility: hidden; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease; }
+.tutoringMenu:hover .tutoringMenuPanel, .tutoringMenu:focus-within .tutoringMenuPanel { display: grid; visibility: visible; opacity: 1; transform: translateY(0); pointer-events: auto; }
+.tutoringMenu summary { list-style: none; cursor: pointer; padding: 10px 16px; border-radius: 999px; color: #27334a; font-size: 15px; font-weight: 800; }.tutoringMenu summary::-webkit-details-marker { display: none; }
+.tutoringMenu summary::after { content: "⌄"; margin-left: 6px; }.tutoringMenu[open] summary { color: #ffffff; background: #243b64; }.tutoringMenuPanel { position: absolute; z-index: 5; top: calc(100% + 10px); right: 0; display: grid; min-width: 205px; padding: 8px; border: 1px solid #dce1e9; border-radius: 12px; background: #ffffff; box-shadow: 0 12px 28px rgba(23,32,51,.15); }.tutoringMenuPanel a { color: #24314b; text-decoration: none; padding: 9px 10px; border-radius: 8px; font-size: 14px; font-weight: 700; }.tutoringMenuPanel a:hover { background: #f1f3f7; }
+.tutoringMenuPanel { display: none; }.tutoringMenu:hover .tutoringMenuPanel, .tutoringMenu:focus-within .tutoringMenuPanel { display: grid; }
+
+.tutorDialog { width: min(700px, calc(100% - 28px)); border: 0; border-radius: 16px; padding: 30px; color: #1d293d; box-shadow: 0 22px 56px rgba(10,20,35,.28); }.tutorDialog::backdrop { background: rgba(20,30,46,.52); }.dialogClose { position: absolute; top: 13px; right: 15px; width: 34px; height: 34px; border: 0; border-radius: 50%; color: #38445a; background: #f1f3f6; font-size: 24px; cursor: pointer; }.dialogEyebrow { margin: 0 0 8px; color: #8a6011; font-size: 13px; font-weight: 850; }.tutorDialog h2 { margin: 0; font-size: 28px; }.dialogLead { color: #5d687a; }.tutorChoices { display: grid; gap: 12px; margin-top: 20px; }.tutorChoice { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 13px; align-items: start; padding: 16px; border: 1px solid #dce2e9; border-radius: 12px; }.tutorAvatar { display: grid; width: 48px; height: 48px; place-items: center; overflow: hidden; border-radius: 50%; color: #28416d; background: #e7edf7; font-weight: 900; }.tutorAvatar img { width: 100%; height: 100%; object-fit: cover; }.tutorChoice h3 { margin: 0 0 4px; font-size: 17px; }.tutorChoice p { margin: 0; color: #5d687a; line-height: 1.45; }.tutorChoice details { margin-top: 9px; color: #243b64; font-size: 14px; }.tutorChoice details p { margin-top: 8px; }.chooseTutor { align-self: center; border: 0; border-radius: 8px; padding: 10px 12px; color: #ffffff; background: #243b64; font: inherit; font-weight: 800; cursor: pointer; }
+.bookingForm { display: grid; gap: 13px; margin-top: 18px; }.bookingForm label { display: grid; gap: 6px; color: #354158; font-size: 13px; font-weight: 800; }.bookingForm input { min-height: 42px; border: 1px solid #cfd7e1; border-radius: 8px; padding: 0 10px; font: inherit; }.bookingForm .chooseTutor { justify-self: start; }.formHint, .scheduleStatus { color: #627087; font-size: 13px; line-height: 1.45; }.bookingPanel, .schedulePanel { margin-top: 20px; }.bookingsList { display: grid; gap: 10px; margin-top: 14px; }.bookingItem { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 12px; border: 1px solid #dbe1e8; border-radius: 10px; }.bookingItem span { flex: 1; color: #5a687d; }.bookingItem button { border: 1px solid #d5dbe4; border-radius: 7px; padding: 8px 10px; color: #718096; background: #f7f8fa; }
+@media (max-width: 560px) { .tutorDialog { padding: 28px 18px 18px; }.tutorChoice { grid-template-columns: 42px minmax(0, 1fr); }.chooseTutor { grid-column: 2; justify-self: start; }.tutorAvatar { width: 42px; height: 42px; } }

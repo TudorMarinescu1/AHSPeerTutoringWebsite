@@ -286,8 +286,9 @@ h2 {
   }
 
   .mainNav {
+    width: fit-content;
     max-width: 100%;
-    overflow-x: auto;
+    overflow: visible;
   }
 
   .heroContent {
@@ -319,12 +320,28 @@ h2 {
     font-size: 14px;
   }
 
+  .mainNav {
+    flex-wrap: wrap;
+  }
+
+  .heroContent {
+    width: calc(100% - 44px);
+    max-width: calc(100% - 44px);
+  }
+
   h1 {
-    font-size: 50px;
+    font-size: clamp(42px, 12vw, 50px);
+    overflow-wrap: anywhere;
+    text-wrap: wrap;
+  }
+
+  .heroContent p:not(.eyebrow) {
+    overflow-wrap: anywhere;
   }
 
   .heroActions {
     display: grid;
+    width: 100%;
   }
 
   .actionButton {
