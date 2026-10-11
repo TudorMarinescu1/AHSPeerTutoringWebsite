@@ -121,7 +121,7 @@ button {
   text-decoration: none;
 }
 
-.mainNav a:first-child {
+.mainNav > a:first-child {
   background: #f9c736;
   color: #12213a;
 }

@@ -1,0 +1,79 @@
+/* Shared Tutoring navigation: hover-only so it closes once the pointer leaves. */
+.mainNav .tutoringMenu {
+  position: relative;
+}
+
+.mainNav .tutoringMenu > .tutoringMenuTrigger {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  color: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  background: transparent;
+}
+
+.mainNav .tutoringMenu > .tutoringMenuPanel {
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  right: 0;
+  display: grid;
+  min-width: 205px;
+  padding: 8px;
+  border: 1px solid #dce1e9;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(23, 32, 51, 0.15);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-6px) scaleY(0.96);
+  transform-origin: top right;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease, visibility 0s linear 160ms;
+}
+
+.mainNav .tutoringMenu:hover > .tutoringMenuPanel {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scaleY(1);
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+.mainNav .tutoringMenuPanel > a {
+  padding: 9px 10px;
+  border-radius: 8px;
+  color: #24314b;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  background: transparent;
+}
+
+.mainNav .tutoringMenuPanel > a:hover {
+  color: #24314b;
+  background: #f1f3f7;
+}
+
+.homeScreen .mainNav .tutoringMenu > .tutoringMenuTrigger,
+.aboutPage .mainNav .tutoringMenu > .tutoringMenuTrigger {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tutoringPage .mainNav .tutoringMenu > .tutoringMenuTrigger {
+  color: #27334a;
+}
+
+.tutoringPage .mainNav .tutoringMenu > .tutoringMenuTrigger[aria-current="page"],
+.aboutPage .mainNav .tutoringMenu > .tutoringMenuTrigger[aria-current="page"] {
+  color: #ffffff;
+  background: #243b64;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainNav .tutoringMenu > .tutoringMenuPanel {
+    transition: none;
+  }
+}
